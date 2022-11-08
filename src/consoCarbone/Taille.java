@@ -1,16 +1,16 @@
 package consoCarbone;
 
 public enum Taille {
-    P(4.2),
-    G(19);
+    P(4.2), // Petite voiture
+    G(19.); // Grosse voiture
 
-    private final double conso;
+    private final double consoProd;
 
-    Taille(double conso) {
-        this.conso = conso;
+    Taille(double consoProd) {
+        this.consoProd = consoProd;
     }
 
-    public double getCoef() {
-        return conso;
+    public double getConsoProd() {
+        return consoProd;
     }
 }

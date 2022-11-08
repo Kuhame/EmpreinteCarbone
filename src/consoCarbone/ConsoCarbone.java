@@ -2,17 +2,26 @@ package consoCarbone;
 
 public abstract class ConsoCarbone {
     private static int compteurId = 0;
-    private int id;
+    private final int id;
+
+    private double impact;
 
     public ConsoCarbone() {
         this.id = compteurId++;
     }
 
-    public abstract double impact();
+    public abstract void calculerImpact();
 
-    @Override
-    public String toString() {
-        // TODO meilleur affichage que juste la valeur de l'impact
-        return Double.toString(impact());
+    public double getImpact() {
+        return impact;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    // Package-private pour garantir l'encapsulation
+    void setImpact(double impact) {
+        this.impact = impact;
     }
 }
