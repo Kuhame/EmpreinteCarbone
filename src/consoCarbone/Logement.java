@@ -4,6 +4,11 @@ public class Logement extends ConsoCarbone {
     private final int superficie; // m2
     private final CE classeEnergetique;
 
+    /**
+     * Initialise un logement
+     * @param superficie La superficie du logement en m²
+     * @param classeEnergetique La classe énergétique du logement
+     */
     public Logement(int superficie, CE classeEnergetique) {
         super();
 

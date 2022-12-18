@@ -10,6 +10,9 @@ public abstract class ConsoCarbone implements Comparable<ConsoCarbone> {
         this.id = compteurId++;
     }
 
+    /**
+     * Calcule l'impact d'une consommation carbonne en fonction de ses caractéristiques
+     */
     public abstract void calculerImpact();
 
     public double getImpact() {

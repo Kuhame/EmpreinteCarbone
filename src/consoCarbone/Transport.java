@@ -9,6 +9,13 @@ public class Transport extends ConsoCarbone {
 
     private static final double RATIO_IMPACT = 1.93 * Math.pow(10, -4);
 
+    /**
+     * Initialise un nouveau moyen de transport
+     * @param possede Si l'utilisateur possède une voiture
+     * @param taille La taille du véhicule le cas échéant
+     * @param kilomAnnee Le nombre de km parcourus par an le cas échéant
+     * @param amortissement La durée de conservation le cas échéant
+     */
     public Transport(boolean possede, Taille taille, int kilomAnnee, int amortissement) {
         super();
 

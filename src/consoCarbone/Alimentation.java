@@ -8,6 +8,11 @@ public class Alimentation extends ConsoCarbone {
     private static final double RATIO_VOLAILLE = 1.6;
     private static final double RATIO_VEGE = 0.9;
 
+    /**
+     * Initialise une alimentation
+     * @param txBoeuf La proportion de consommation de repas à base de boeuf [0.0, 1.0]
+     * @param txVege La proportion de consommation de repas végétariens [0.0, 1.0]
+     */
     public Alimentation(double txBoeuf, double txVege) {
         super();
 
