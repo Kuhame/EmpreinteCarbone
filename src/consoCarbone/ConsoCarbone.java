@@ -1,6 +1,6 @@
 package consoCarbone;
 
-public abstract class ConsoCarbone {
+public abstract class ConsoCarbone implements Comparable<ConsoCarbone> {
     private static int compteurId = 0;
     private final int id;
 
@@ -23,5 +23,10 @@ public abstract class ConsoCarbone {
     // Package-private pour garantir l'encapsulation
     void setImpact(double impact) {
         this.impact = impact;
+    }
+
+    @Override
+    public int compareTo(ConsoCarbone o) {
+        return (int) (impact - o.impact);
     }
 }
