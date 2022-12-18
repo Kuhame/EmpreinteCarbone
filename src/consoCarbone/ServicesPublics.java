@@ -20,4 +20,9 @@ public class ServicesPublics extends ConsoCarbone {
     public void calculerImpact() {
         super.setImpact(impact);
     }
+
+    @Override
+    public String toString() {
+        return "Impact des services publics : " + super.getImpact();
+    }
 }
