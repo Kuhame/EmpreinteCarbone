@@ -28,6 +28,9 @@ public class Utilisateur {
                 services.getImpact();
     }
 
+    /**
+     * Affiche le détail de chacune des consommations de l'utilisateur
+     */
     public void detaillerEmpreinte() {
         System.out.println(alimentation);
         System.out.println(bienConso);
@@ -37,7 +40,8 @@ public class Utilisateur {
     }
 
     /**
-     * TODO javadoc
+     * Affiche chaque consommation de l'utilisateur par ordre décroissant et donne des recommandations selon les
+     * résultats
      */
     public void recommandations() {
         // Affichage des impacts carbone par ordre décroissant
