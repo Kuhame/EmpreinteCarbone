@@ -47,6 +47,14 @@ public class Alimentation extends ConsoCarbone {
     }
 
     @Override
+    public String recommandation() {
+        if (txBoeuf >= 0.6) {
+            return "Vous devriez songer à manger moins de viande.";
+        }
+        return "Tout en minimisant votre consommation de viande, vous pourriez vous orienter vers des produits locaux.";
+    }
+
+    @Override
     public String toString() {
         return "Impact de l'alimentation : " + super.getImpact();
     }

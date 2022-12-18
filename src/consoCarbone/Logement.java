@@ -39,6 +39,11 @@ public class Logement extends ConsoCarbone {
     }
 
     @Override
+    public String recommandation() {
+        return "Envisagez des travaux d'isolation pour réduire la consommation d'énergie de votre logement.";
+    }
+
+    @Override
     public String toString() {
         return "Impact du logement : " + super.getImpact();
     }

@@ -29,6 +29,14 @@ public class ServicesPublics extends ConsoCarbone {
     }
 
     @Override
+    public String recommandation() {
+        return "Vous pourriez demander à votre collectivité de réduire, notamment, le temps durant lequel sont allumées " +
+                "les éclairages des rues ou des commerces, particulièrement le jour et la nuit après fermeture. \n " +
+                "Attention : la nécessaire réduction des émissions du service public ne signifie pas moins de service public, au\n" +
+                "contraire !";
+    }
+
+    @Override
     public String toString() {
         return "Impact des services publics : " + super.getImpact();
     }

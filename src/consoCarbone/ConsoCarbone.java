@@ -28,6 +28,12 @@ public abstract class ConsoCarbone implements Comparable<ConsoCarbone> {
         this.impact = impact;
     }
 
+    /**
+     * Donne une conduite à adopter pour réduire la consommation ciblée
+     * @return Une chaîne de caractères décrivant le comportement adopter pour réduire la consommation ciblée
+     */
+    public abstract String recommandation();
+
     @Override
     public int compareTo(ConsoCarbone o) {
         return (int) (impact - o.impact);

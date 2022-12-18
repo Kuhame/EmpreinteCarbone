@@ -26,6 +26,17 @@ public class Transport extends ConsoCarbone {
         calculerImpact();
     }
 
+    /**
+     * Constructeur pour Utilisateur n'ayant pas de voiture
+     */
+    public Transport() {
+        this.possede = false;
+        this.taille = null;
+        this.kilomAnnee = 0;
+        this.amortissement = 0;
+        calculerImpact();
+    }
+
     @Override
     public void calculerImpact() {
         if (!possede) {
@@ -57,6 +68,14 @@ public class Transport extends ConsoCarbone {
         System.out.println("- Fret et messagerie : 383 kg eq CO2,");
         System.out.println("- Avion : 580 kg eq CO2,");
         System.out.println("- Voiture : 1 972 kg eq CO2.");
+    }
+
+    @Override
+    public String recommandation() {
+        if (taille == Taille.G) {
+            return "Essayez de changer de voiture pour un plus petit modèle.";
+        }
+        return "Avez-vous envisagé de passer à la voiture électrique ?";
     }
 
     @Override
