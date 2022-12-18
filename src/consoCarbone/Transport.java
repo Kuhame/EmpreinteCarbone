@@ -19,6 +19,14 @@ public class Transport extends ConsoCarbone {
     public Transport(boolean possede, Taille taille, int kilomAnnee, int amortissement) {
         super();
 
+        if (kilomAnnee < 0) {
+            throw new IllegalArgumentException("Le nombre de km parcourus par an avec la voiture doit être supérieur ou égal à 0.");
+        }
+
+        if (amortissement < 0) {
+            throw new IllegalArgumentException("Le nombre d'années d'amortissement de la voiture doit être supérieur ou égal à 0.");
+        }
+
         this.possede = possede;
         this.taille = taille;
         this.kilomAnnee = kilomAnnee;

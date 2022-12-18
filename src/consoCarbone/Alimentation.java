@@ -16,8 +16,12 @@ public class Alimentation extends ConsoCarbone {
     public Alimentation(double txBoeuf, double txVege) {
         super();
 
-        assert (txBoeuf >= 0.0 && txBoeuf <= 1.0);
-        assert (txVege >= 0.0 && txVege <= 1.0);
+        if (!(txBoeuf >= 0.0 && txBoeuf <= 1.0)) {
+            throw new IllegalArgumentException("Le taux de repas à base de boeuf doit être compris entre 0.0 et 1.0");
+        }
+        if (!(txVege >= 0.0 && txVege <= 1.0)) {
+            throw new IllegalArgumentException("Le taux de repas végétariens doit être compris entre 0.0 et 1.0");
+        }
 
         this.txBoeuf = txBoeuf;
         this.txVege = txVege;

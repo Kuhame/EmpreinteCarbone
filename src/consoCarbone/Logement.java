@@ -12,6 +12,11 @@ public class Logement extends ConsoCarbone {
     public Logement(int superficie, CE classeEnergetique) {
         super();
 
+        // SDF
+        if (superficie < 0.0) {
+            throw new IllegalArgumentException("La superficie du logement doit être supérieur ou égal à 0.0.");
+        }
+
         this.superficie = superficie;
         this.classeEnergetique = classeEnergetique;
         calculerImpact();

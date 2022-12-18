@@ -11,6 +11,10 @@ public class BienConso extends ConsoCarbone {
     public BienConso(double montant) {
         super();
 
+        if (montant < 0.0) {
+            throw new IllegalArgumentException("Le montant des biens de consommation doit être supérieur ou égal à 0.0.");
+        }
+
         this.montant = montant;
         calculerImpact();
     }
