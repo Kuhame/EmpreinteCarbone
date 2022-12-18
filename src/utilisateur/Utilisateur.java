@@ -2,10 +2,8 @@ package utilisateur;
 
 import consoCarbone.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class Utilisateur {
     private final Alimentation alimentation;
@@ -17,6 +15,14 @@ public class Utilisateur {
     private double impactLogements;
     private double impactTransports;
 
+    /**
+     * Constructeur pour logement et voiture uniques
+     * @param alimentation Alimentation de l'utilisateur
+     * @param bienConso Biens de consommation de l'utilisateur
+     * @param logement Logement unique de l'utilisateur
+     * @param transport Voiture unique de l'utilisateur
+     * @param servicesPublics Services publics
+     */
     public Utilisateur(Alimentation alimentation, BienConso bienConso, Logement logement, Transport transport,
                        ServicesPublics servicesPublics) {
         this.alimentation = alimentation;
@@ -41,6 +47,82 @@ public class Utilisateur {
 
         calculerImpactLogements();
         calculerImpactTransports();
+    }
+
+    /**
+     * Initialisation par fichier
+     * @param fichier Le fichier texte
+     */
+    public Utilisateur(String fichier) {
+        // Lecture de toutes les lignes du fichier pour parsing 1 à 1
+        LinkedList<String> entrees = new LinkedList<>();
+        try {
+            FileReader file = new FileReader(fichier);
+            BufferedReader br = new BufferedReader(file);
+
+            String line = br.readLine();
+            while (line != null) {
+                entrees.add(line);
+                line = br.readLine();
+            }
+
+        } catch (FileNotFoundException e) {
+            System.err.println("Fichier introuvable.");
+            System.exit(1);
+        } catch (IOException e) {
+            System.err.println("Problème de lecture du fichier.");
+            System.exit(1);
+        }
+
+        // Alimentation
+        double txBoeuf = Double.parseDouble(entrees.pop());
+        double txVege = Double.parseDouble(entrees.pop());
+        alimentation = new Alimentation(txBoeuf, txVege);
+
+        // Biens de consommation
+        double montant = Double.parseDouble(entrees.pop());
+        bienConso = new BienConso(montant);
+
+        // Logements
+
+        int nbLogements = Integer.parseInt(entrees.pop());
+
+        int nbLogementsInit = 0;
+        logements = new ArrayList<>();
+
+        // Si pas de logement, initialiser un logement de superficie nulle (qui aura un impact nul)
+        if (nbLogements == 0) {
+            logements.add(new Logement(0, CE.E));
+        }
+
+        while (nbLogementsInit < nbLogements) {
+            int superficie = Integer.parseInt(entrees.pop());
+            CE classeEnergetique = CE.valueOf(entrees.pop());
+            logements.add(new Logement(superficie, classeEnergetique));
+            ++nbLogementsInit;
+        }
+
+        // Transports
+
+        int nbTransports = Integer.parseInt(entrees.pop());
+
+        int nbTransportsInit = 0;
+        transports = new ArrayList<>();
+
+        // Si pas de transport, appeler le constructeur correspondant
+        if (nbTransports == 0) {
+            transports.add(new Transport());
+        }
+
+        while (nbTransportsInit < nbTransports) {
+            Taille taille = Taille.valueOf(entrees.pop());
+            int kilomAnnee = Integer.parseInt(entrees.pop());
+            int amortissement = Integer.parseInt(entrees.pop());
+            transports.add(new Transport(true, taille, kilomAnnee, amortissement));
+            ++nbTransportsInit;
+        }
+
+        servicesPublics = ServicesPublics.getInstance();
     }
 
     private void calculerImpactLogements() {
@@ -112,37 +194,6 @@ public class Utilisateur {
     }
 
     public static void main(String[] args) {
-        double txBoeuf = 0.8;
-        double txVege = 0.2;
-        Alimentation alimentation = new Alimentation(txBoeuf, txVege);
-
-        int superficie = 17;
-        CE classeEnergetique = CE.C;
-        Logement logement = new Logement(superficie, classeEnergetique);
-        Logement logement2 = new Logement(200, CE.D);
-        List<Logement> logements = new ArrayList<>();
-        logements.add(logement);
-        logements.add(logement2);
-
-        double montant = 12345.67;
-        BienConso bienConso = new BienConso(montant);
-
-        boolean possede = true;
-        Taille taille = Taille.P;
-        int kilomAnnee = 1234;
-        int amortissement = 10;
-        Transport transport = new Transport(possede, taille, kilomAnnee, amortissement);
-        Transport transport2 = new Transport(possede, Taille.G, 11037, 10);
-        List<Transport> transports = new ArrayList<>();
-        transports.add(transport);
-        transports.add(transport2);
-
-//        Utilisateur u = new Utilisateur(alimentation, bienConso, logement, transport, ServicesPublics.getInstance());
-//        u.afficherRecommandations();
-//
-//        System.out.println();
-
-        Utilisateur u2 = new Utilisateur(alimentation, bienConso, logements, transports, ServicesPublics.getInstance());
-        u2.afficherRecommandations();
+        new Utilisateur("utilisateur_txt/utilisateur2.txt").afficherRecommandations();
     }
 }
