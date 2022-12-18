@@ -36,6 +36,6 @@ public abstract class ConsoCarbone implements Comparable<ConsoCarbone> {
 
     @Override
     public int compareTo(ConsoCarbone o) {
-        return (int) (impact - o.impact);
+        return Double.compare(impact, o.impact);
     }
 }

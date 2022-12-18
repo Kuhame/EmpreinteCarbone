@@ -12,32 +12,32 @@ public class Utilisateur {
     private final BienConso bienConso;
     private final List<Logement> logements;
     private final List<Transport> transports;
-    private final ServicesPublics services;
+    private final ServicesPublics servicesPublics;
 
     private double impactLogements;
     private double impactTransports;
 
     public Utilisateur(Alimentation alimentation, BienConso bienConso, Logement logement, Transport transport,
-                       ServicesPublics services) {
+                       ServicesPublics servicesPublics) {
         this.alimentation = alimentation;
         this.bienConso = bienConso;
         this.logements = new ArrayList<>();
         this.logements.add(logement);
         this.transports = new ArrayList<>();
         this.transports.add(transport);
-        this.services = services;
+        this.servicesPublics = servicesPublics;
 
         calculerImpactLogements();
         calculerImpactTransports();
     }
 
     public Utilisateur(Alimentation alimentation, BienConso bienConso, List<Logement> logements, List<Transport> transports,
-                       ServicesPublics services) {
+                       ServicesPublics servicesPublics) {
         this.alimentation = alimentation;
         this.bienConso = bienConso;
         this.logements = logements;
         this.transports = transports;
-        this.services = services;
+        this.servicesPublics = servicesPublics;
 
         calculerImpactLogements();
         calculerImpactTransports();
@@ -61,7 +61,7 @@ public class Utilisateur {
 
     public double calculerEmpreinte() {
         return alimentation.getImpact() + bienConso.getImpact() + impactLogements + impactTransports +
-                services.getImpact();
+                servicesPublics.getImpact();
     }
 
     /**
@@ -72,7 +72,7 @@ public class Utilisateur {
         System.out.println(bienConso);
         System.out.println("Impact du logement : " + impactLogements);
         System.out.println("Impact du logement : " + impactTransports);
-        System.out.println(services);
+        System.out.println(servicesPublics);
     }
 
     /**
@@ -93,7 +93,7 @@ public class Utilisateur {
         Transport transport = transports.stream().max(Comparator.comparing(ConsoCarbone::getImpact)).orElse(null);
         consoCarbones.add(transport);
 
-        consoCarbones.add(services);
+        consoCarbones.add(servicesPublics);
 
         Collections.sort(consoCarbones);
         Collections.reverse(consoCarbones);
