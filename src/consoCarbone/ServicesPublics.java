@@ -38,6 +38,6 @@ public class ServicesPublics extends ConsoCarbone {
 
     @Override
     public String toString() {
-        return "Impact des services publics : " + super.getImpact();
+        return "Impact des services publics : " + super.toString();
     }
 }

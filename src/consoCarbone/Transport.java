@@ -89,6 +89,6 @@ public class Transport extends ConsoCarbone {
 
     @Override
     public String toString() {
-        return "Impact du transport : " + super.getImpact();
+        return "Impact du transport : " + super.toString();
     }
 }

@@ -51,6 +51,6 @@ public class Logement extends ConsoCarbone {
 
     @Override
     public String toString() {
-        return "Impact du logement : " + super.getImpact();
+        return "Impact du logement : " + super.toString();
     }
 }
