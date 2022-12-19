@@ -20,12 +20,24 @@ public class Main {
 
         Alimentation alimentation = new Alimentation(txBoeuf, txVege);
 
-        // Biens de consommation
+        // Habillement (Biens de consommation)
 
-        System.out.println("Saisir le montant de vos dépenses en biens de consommation (€).");
-        double montant = Double.parseDouble(sc.next());
+        System.out.println("Saisir le nombre de chemises que vous achetez par an.");
+        int nbChemises = Integer.parseInt(sc.next());
+        System.out.println("Saisir le nombre de jeans que vous achetez par an.");
+        int nbJeans = Integer.parseInt(sc.next());
+        System.out.println("Saisir le nombre de T-shirts que vous achetez par an.");
+        int nbTShirts = Integer.parseInt(sc.next());
+        System.out.println("Saisir le nombre de pulls que vous achetez par an.");
+        int nbPulls = Integer.parseInt(sc.next());
+        System.out.println("Saisir le nombre de manteaux que vous achetez par an.");
+        int nbManteaux = Integer.parseInt(sc.next());
+        System.out.println("Saisir le nombre de robes que vous achetez par an.");
+        int nbRobes = Integer.parseInt(sc.next());
+        System.out.println("Saisir le nombre de paires de chaussres que vous achetez par an.");
+        int nbChaussures = Integer.parseInt(sc.next());
 
-        BienConso bienConso = new BienConso(montant);
+        BienConso habillement = new Habillement(nbChemises, nbJeans, nbTShirts, nbPulls, nbManteaux, nbRobes, nbChaussures);
 
         // Logements
 
@@ -52,7 +64,7 @@ public class Main {
 
         // Transports
 
-        System.out.println("Combien possédez-vous de transports ?");
+        System.out.println("Combien possédez-vous de voitures ?");
         int nbTransports = Integer.parseInt(sc.next());
 
         int nbTransportsInit = 0;
@@ -79,7 +91,7 @@ public class Main {
         ServicesPublics servicesPublics = ServicesPublics.getInstance();
 
         // Initialisation de l'utilisateur
-        Utilisateur utilisateur = new Utilisateur(alimentation, bienConso, logements, transports, servicesPublics);
+        Utilisateur utilisateur = new Utilisateur(alimentation, habillement, logements, transports, servicesPublics);
 
         // Affichage de l'empreinte carbone de l'utilisateur
         utilisateur.afficherRecommandations();

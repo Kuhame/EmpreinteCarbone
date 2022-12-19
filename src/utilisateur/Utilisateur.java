@@ -84,9 +84,15 @@ public class Utilisateur {
         double txVege = Double.parseDouble(entrees.pop());
         alimentation = new Alimentation(txBoeuf, txVege);
 
-        // Biens de consommation
-        double montant = Double.parseDouble(entrees.pop());
-        bienConso = new BienConso(montant);
+        // Habillement (Biens de consommation)
+        int nbChemises = Integer.parseInt(entrees.pop());
+        int nbJeans = Integer.parseInt(entrees.pop());
+        int nbTShirts = Integer.parseInt(entrees.pop());
+        int nbPulls = Integer.parseInt(entrees.pop());
+        int nbManteaux = Integer.parseInt(entrees.pop());
+        int nbRobes = Integer.parseInt(entrees.pop());
+        int nbChaussures = Integer.parseInt(entrees.pop());
+        bienConso = new Habillement(nbChemises, nbJeans, nbTShirts, nbPulls, nbManteaux, nbRobes, nbChaussures);
 
         // Logements
 
@@ -183,6 +189,7 @@ public class Utilisateur {
         consoCarbones.add(servicesPublics);
 
         Collections.sort(consoCarbones);
+        // Afichage par ordre décroissant
         Collections.reverse(consoCarbones);
 
         StringBuilder sb = new StringBuilder();
@@ -192,7 +199,7 @@ public class Utilisateur {
         }
         System.out.println(sb);
 
-        // Recommandations
+        // Recommandations pour les 3 plus importants
         for (int i = 0; i < 3; ++i) {
             System.out.println(consoCarbones.get(i).recommandation());
         }

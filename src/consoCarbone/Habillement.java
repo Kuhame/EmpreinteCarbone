@@ -1,6 +1,10 @@
 package consoCarbone;
 
+/**
+ * Bien de consommation spécifique
+ */
 public class Habillement extends BienConso {
+    // Prix moyens arbitraires
     private static final double PRIX_CHEMISE = 30.0;
     private static final double PRIX_JEAN = 40.0;
     private static final double PRIX_T_SHIRT = 20.0;
@@ -15,7 +19,7 @@ public class Habillement extends BienConso {
     private final int nbPulls;
     private final int nbManteaux;
     private final int nbRobes;
-    private final int nbChaussures;;
+    private final int nbChaussures;
 
     public Habillement(int nbChemises, int nbJeans, int nbTShirts, int nbPulls, int nbManteaux, int nbRobes,
                        int nbChaussures) {
@@ -42,6 +46,7 @@ public class Habillement extends BienConso {
         total += nbChaussures * PRIX_CHAUSSURES;
 
         super.setMontant(total);
+        super.calculerImpact();
     }
 
     @Override

@@ -1,6 +1,6 @@
 package consoCarbone;
 
-public class BienConso extends ConsoCarbone {
+public abstract class BienConso extends ConsoCarbone {
     private double montant;
     private static final int DEPENSES_T_CO2_EQ = 1750; // 1 TCO2eq = 1750€
 
