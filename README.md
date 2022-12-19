@@ -82,3 +82,6 @@ Tout en minimisant votre consommation de viande, vous pourriez vous orienter ver
 Vous pourriez demander à votre collectivité de réduire, notamment, le temps durant lequel sont allumés les éclairages des rues ou des commerces, particulièrement le jour et la nuit après fermeture.
 Attention : la nécessaire réduction des émissions du service public ne signifie pas moins de service public, au contraire !
 ```
+#### GUI (utilisateur_txt/utilisateur1.txt)
+
+![GUI](./static/gui.png)
