@@ -214,7 +214,6 @@ public class GUI extends Application {
         stage.setScene(new Scene(root, 600, 600));
 
         stage.show();
-
     }
 
     public static void main(String[] args) {
