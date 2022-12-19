@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import utilisateur.Utilisateur;
 
@@ -94,45 +95,67 @@ public class GUI extends Application {
         TextField tfAmortissement = new TextField();
         tfAmortissement.setDisable(true);
 
+        // Checkbox event handler
+        chkPossede.selectedProperty().addListener((observableValue, oldValue, newValue) -> {
+            labelTaille.setDisable(oldValue);
+            cbxTaille.setDisable(oldValue);
+            labelNbKmAn.setDisable(oldValue);
+            tfNbKmAn.setDisable(oldValue);
+            labelAmortissement.setDisable(oldValue);
+            tfAmortissement.setDisable(oldValue);
+        });
+
         // Popup pour afficher les recommandations
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("Résultats");
         ButtonType btnOk = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().add(btnOk);
 
+        // Label erreur saisie
+        Label labelErreur = new Label("Erreur de saisie.");
+        labelErreur.setTextFill(Color.RED);
+        labelErreur.setVisible(false);
+
         // ***** Bouton de calcul *****
         Button btnCalcul = new Button("Calculer");
         btnCalcul.setOnAction(event -> {
-            double txBoeuf = Double.parseDouble(tfTxBoeuf.getText());
-            double txVege = Double.parseDouble(tfTxVege.getText());
+            try {
+                double txBoeuf = Double.parseDouble(tfTxBoeuf.getText());
+                double txVege = Double.parseDouble(tfTxVege.getText());
 
-            int nbChemises = Integer.parseInt(tfNbChemises.getText());
-            int nbJeans = Integer.parseInt(tfNbJeans.getText());
-            int nbTshirts = Integer.parseInt(tfNbTShirts.getText());
-            int nbPulls = Integer.parseInt(tfNbPulls.getText());
-            int nbManteaux = Integer.parseInt(tfNbManteaux.getText());
-            int nbRobes = Integer.parseInt(tfNbRobes.getText());
-            int nbChaussures = Integer.parseInt(tfNbChaussures.getText());
+                int nbChemises = Integer.parseInt(tfNbChemises.getText());
+                int nbJeans = Integer.parseInt(tfNbJeans.getText());
+                int nbTshirts = Integer.parseInt(tfNbTShirts.getText());
+                int nbPulls = Integer.parseInt(tfNbPulls.getText());
+                int nbManteaux = Integer.parseInt(tfNbManteaux.getText());
+                int nbRobes = Integer.parseInt(tfNbRobes.getText());
+                int nbChaussures = Integer.parseInt(tfNbChaussures.getText());
 
-            int superficie = Integer.parseInt(tfSuperficie.getText());
-            CE classeEnergetique = cbxCE.getValue();
+                int superficie = Integer.parseInt(tfSuperficie.getText());
+                CE classeEnergetique = cbxCE.getValue();
 
-            Transport transport = new Transport();
-            if (chkPossede.isSelected()) {
-                Taille taille = cbxTaille.getValue();
-                int kilomAnnee = Integer.parseInt(tfNbKmAn.getText());
-                int amortissement = Integer.parseInt(tfAmortissement.getText());
-                transport = new Transport(chkPossede.isSelected(), taille, kilomAnnee, amortissement);
+                Transport transport = new Transport();
+                if (chkPossede.isSelected()) {
+                    Taille taille = cbxTaille.getValue();
+                    int kilomAnnee = Integer.parseInt(tfNbKmAn.getText());
+                    int amortissement = Integer.parseInt(tfAmortissement.getText());
+                    transport = new Transport(chkPossede.isSelected(), taille, kilomAnnee, amortissement);
+                }
+
+                Alimentation alimentation = new Alimentation(txBoeuf, txVege);
+                BienConso habillement = new Habillement(nbChemises, nbJeans, nbTshirts, nbPulls, nbManteaux, nbRobes, nbChaussures);
+                Logement logement = new Logement(superficie, classeEnergetique);
+                ServicesPublics servicesPublics = ServicesPublics.getInstance();
+                Utilisateur utilisateur = new Utilisateur(alimentation, habillement, logement, transport, servicesPublics);
+
+                dialog.setContentText(utilisateur.recommandations());
+                dialog.showAndWait();
+
+                labelErreur.setVisible(false);
+
+            } catch (NumberFormatException e) {
+                labelErreur.setVisible(true);
             }
-
-            Alimentation alimentation = new Alimentation(txBoeuf, txVege);
-            BienConso habillement = new Habillement(nbChemises, nbJeans, nbTshirts, nbPulls, nbManteaux, nbRobes, nbChaussures);
-            Logement logement = new Logement(superficie, classeEnergetique);
-            ServicesPublics servicesPublics = ServicesPublics.getInstance();
-            Utilisateur utilisateur = new Utilisateur(alimentation, habillement, logement, transport, servicesPublics);
-
-            dialog.setContentText(utilisateur.recommandations());
-            dialog.showAndWait();
         });
 
 
@@ -180,7 +203,8 @@ public class GUI extends Application {
                 tfNbKmAn,
                 labelAmortissement,
                 tfAmortissement,
-                btnCalcul
+                btnCalcul,
+                labelErreur
         );
 
         HBox root = new HBox(50);
@@ -191,15 +215,6 @@ public class GUI extends Application {
 
         stage.show();
 
-        // Checkbox event handler
-        chkPossede.selectedProperty().addListener((observableValue, oldValue, newValue) -> {
-            labelTaille.setDisable(oldValue);
-            cbxTaille.setDisable(oldValue);
-            labelNbKmAn.setDisable(oldValue);
-            tfNbKmAn.setDisable(oldValue);
-            labelAmortissement.setDisable(oldValue);
-            tfAmortissement.setDisable(oldValue);
-        });
     }
 
     public static void main(String[] args) {
