@@ -11,9 +11,10 @@ public class Transport extends ConsoCarbone {
 
     /**
      * Initialise un nouveau moyen de transport
-     * @param possede Si l'utilisateur possède une voiture
-     * @param taille La taille du véhicule le cas échéant
-     * @param kilomAnnee Le nombre de km parcourus par an le cas échéant
+     *
+     * @param possede       Si l'utilisateur possède une voiture
+     * @param taille        La taille du véhicule le cas échéant
+     * @param kilomAnnee    Le nombre de km parcourus par an le cas échéant
      * @param amortissement La durée de conservation le cas échéant
      */
     public Transport(boolean possede, Taille taille, int kilomAnnee, int amortissement) {

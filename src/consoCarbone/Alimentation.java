@@ -10,8 +10,9 @@ public class Alimentation extends ConsoCarbone {
 
     /**
      * Initialise une alimentation
+     *
      * @param txBoeuf La proportion de consommation de repas à base de boeuf [0.0, 1.0]
-     * @param txVege La proportion de consommation de repas végétariens [0.0, 1.0]
+     * @param txVege  La proportion de consommation de repas végétariens [0.0, 1.0]
      */
     public Alimentation(double txBoeuf, double txVege) {
         super();

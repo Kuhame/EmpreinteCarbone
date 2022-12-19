@@ -2,7 +2,10 @@ package utilisateur;
 
 import consoCarbone.*;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class Utilisateur {
@@ -17,10 +20,11 @@ public class Utilisateur {
 
     /**
      * Constructeur pour logement et voiture uniques
-     * @param alimentation Alimentation de l'utilisateur
-     * @param bienConso Biens de consommation de l'utilisateur
-     * @param logement Logement unique de l'utilisateur
-     * @param transport Voiture unique de l'utilisateur
+     *
+     * @param alimentation    Alimentation de l'utilisateur
+     * @param bienConso       Biens de consommation de l'utilisateur
+     * @param logement        Logement unique de l'utilisateur
+     * @param transport       Voiture unique de l'utilisateur
      * @param servicesPublics Services publics
      */
     public Utilisateur(Alimentation alimentation, BienConso bienConso, Logement logement, Transport transport,
@@ -51,6 +55,7 @@ public class Utilisateur {
 
     /**
      * Initialisation par fichier
+     *
      * @param fichier Le fichier texte
      */
     public Utilisateur(String fichier) {
@@ -163,7 +168,7 @@ public class Utilisateur {
      */
     public void afficherRecommandations() {
         // Affichage des impacts carbone par ordre décroissant
-        List<ConsoCarbone> consoCarbones  = new ArrayList<>();
+        List<ConsoCarbone> consoCarbones = new ArrayList<>();
         consoCarbones.add(alimentation);
         consoCarbones.add(bienConso);
 

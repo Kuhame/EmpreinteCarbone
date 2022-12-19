@@ -14,6 +14,7 @@ public class ServicesPublics extends ConsoCarbone {
 
     /**
      * Crée une instance unique de la classe si elle n'existe pas et la renvoie
+     *
      * @return Le singleton de la classe
      */
     public static ServicesPublics getInstance() {

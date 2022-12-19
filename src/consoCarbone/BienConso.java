@@ -1,11 +1,12 @@
 package consoCarbone;
 
 public class BienConso extends ConsoCarbone {
-    private final double montant;
+    private double montant;
     private static final int DEPENSES_T_CO2_EQ = 1750; // 1 TCO2eq = 1750€
 
     /**
      * Initialise un bien de consommation
+     *
      * @param montant Le montant du bien en euros
      */
     public BienConso(double montant) {
@@ -21,6 +22,10 @@ public class BienConso extends ConsoCarbone {
 
     public double getMontant() {
         return montant;
+    }
+
+    protected void setMontant(double montant) {
+        this.montant = montant;
     }
 
     @Override
