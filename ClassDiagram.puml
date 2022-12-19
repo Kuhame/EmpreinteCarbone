@@ -1,0 +1,49 @@
+@startuml
+class utilisateur.Utilisateur {
+}
+abstract class consoCarbone.ConsoCarbone {
+}
+class consoCarbone.Transport {
+}
+enum consoCarbone.CE {
++  A
++  B
++  C
++  D
++  E
++  F
++  G
+}
+enum consoCarbone.Taille {
++  P
++  G
+}
+class test.TestServicesPublics {
+}
+class consoCarbone.Alimentation {
+}
+class test.TestAlimentation {
+}
+class main.GUI {
+}
+class consoCarbone.Habillement {
+}
+class consoCarbone.Logement {
+}
+class main.Main {
+}
+class consoCarbone.ServicesPublics {
+}
+abstract class consoCarbone.BienConso {
+}
+
+
+consoCarbone.Comparable <|.. consoCarbone.ConsoCarbone
+consoCarbone.ConsoCarbone <|-- consoCarbone.Transport
+consoCarbone.ConsoCarbone <|-- consoCarbone.Alimentation
+javafx.application.Application <|-- main.GUI
+consoCarbone.BienConso <|-- consoCarbone.Habillement
+consoCarbone.ConsoCarbone <|-- consoCarbone.Logement
+consoCarbone.ConsoCarbone <|-- consoCarbone.ServicesPublics
+consoCarbone.ConsoCarbone <|-- consoCarbone.BienConso
+@enduml
