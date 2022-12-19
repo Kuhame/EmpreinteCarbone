@@ -3,8 +3,6 @@ package main;
 import consoCarbone.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -104,40 +102,41 @@ public class GUI extends Application {
 
         // ***** Bouton de calcul *****
         Button btnCalcul = new Button("Calculer");
-        btnCalcul.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                double txBoeuf = Double.parseDouble(tfTxBoeuf.getText());
-                double txVege = Double.parseDouble(tfTxVege.getText());
-                int nbChemises = Integer.parseInt(tfNbChemises.getText());
-                int nbJeans = Integer.parseInt(tfNbJeans.getText());
-                int nbTshirts = Integer.parseInt(tfNbTShirts.getText());
-                int nbPulls = Integer.parseInt(tfNbPulls.getText());
-                int nbManteaux = Integer.parseInt(tfNbManteaux.getText());
-                int nbRobes = Integer.parseInt(tfNbRobes.getText());
-                int nbChaussures = Integer.parseInt(tfNbChaussures.getText());
-                int superficie = Integer.parseInt(tfSuperficie.getText());
-                CE classeEnergetique = cbxCE.getValue();
-                Transport transport = new Transport();
-                if(chkPossede.isSelected()){
-                    Taille taille = cbxTaille.getValue();
-                    int kilomAnnee = Integer.parseInt(tfNbKmAn.getText());
-                    int amortissement = Integer.parseInt(tfAmortissement.getText());
-                    transport = new Transport(chkPossede.isSelected(), taille, kilomAnnee, amortissement);
-                }
-                Alimentation alimentation = new Alimentation(txBoeuf, txVege);
-                BienConso habillement = new Habillement(nbChemises, nbJeans, nbTshirts, nbPulls, nbManteaux, nbRobes, nbChaussures);
-                Logement logement = new Logement(superficie, classeEnergetique);
-                ServicesPublics servicesPublics = ServicesPublics.getInstance();
-                Utilisateur utilisateur = new Utilisateur(alimentation, habillement, logement, transport, servicesPublics);
+        btnCalcul.setOnAction(event -> {
+            double txBoeuf = Double.parseDouble(tfTxBoeuf.getText());
+            double txVege = Double.parseDouble(tfTxVege.getText());
 
-                dialog.setContentText(utilisateur.recommandations());
-                dialog.showAndWait();
+            int nbChemises = Integer.parseInt(tfNbChemises.getText());
+            int nbJeans = Integer.parseInt(tfNbJeans.getText());
+            int nbTshirts = Integer.parseInt(tfNbTShirts.getText());
+            int nbPulls = Integer.parseInt(tfNbPulls.getText());
+            int nbManteaux = Integer.parseInt(tfNbManteaux.getText());
+            int nbRobes = Integer.parseInt(tfNbRobes.getText());
+            int nbChaussures = Integer.parseInt(tfNbChaussures.getText());
+
+            int superficie = Integer.parseInt(tfSuperficie.getText());
+            CE classeEnergetique = cbxCE.getValue();
+
+            Transport transport = new Transport();
+            if (chkPossede.isSelected()) {
+                Taille taille = cbxTaille.getValue();
+                int kilomAnnee = Integer.parseInt(tfNbKmAn.getText());
+                int amortissement = Integer.parseInt(tfAmortissement.getText());
+                transport = new Transport(chkPossede.isSelected(), taille, kilomAnnee, amortissement);
             }
+
+            Alimentation alimentation = new Alimentation(txBoeuf, txVege);
+            BienConso habillement = new Habillement(nbChemises, nbJeans, nbTshirts, nbPulls, nbManteaux, nbRobes, nbChaussures);
+            Logement logement = new Logement(superficie, classeEnergetique);
+            ServicesPublics servicesPublics = ServicesPublics.getInstance();
+            Utilisateur utilisateur = new Utilisateur(alimentation, habillement, logement, transport, servicesPublics);
+
+            dialog.setContentText(utilisateur.recommandations());
+            dialog.showAndWait();
         });
 
 
-                stage.setTitle("Calculateur d'empreinte carbone");
+        stage.setTitle("Calculateur d'empreinte carbone");
 
         // Partie gauche du formulaire
         VBox gauche = new VBox();
