@@ -19,7 +19,7 @@ public class GUI extends Application {
         // ***** Alimentation *****
 
         // Taux boeuf
-        Label labelTxBoeuf = new Label("Proportion de repas à base de boeuf ?");
+        Label labelTxBoeuf = new Label("Proportion de repas à base de bœuf ?");
         TextField tfTxBoeuf = new TextField();
 
         // Taux vege
@@ -49,7 +49,7 @@ public class GUI extends Application {
         TextField tfNbManteaux = new TextField();
 
         // Robes
-        Label labelNbRobes = new Label("Nombre de robes achetés par an ?");
+        Label labelNbRobes = new Label("Nombre de robes achetées par an ?");
         TextField tfNbRobes = new TextField();
 
         // Chaussures
