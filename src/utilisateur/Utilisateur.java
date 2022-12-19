@@ -169,10 +169,12 @@ public class Utilisateur {
     }
 
     /**
-     * Affiche chaque consommation de l'utilisateur par ordre décroissant et donne des recommandations selon les
+     * Renvoie chaque consommation de l'utilisateur par ordre décroissant en donnant des recommandations selon les
      * résultats
+     *
+     * @return Les recommandations associées aux trois empreintes les plus importantes
      */
-    public void afficherRecommandations() {
+    public String recommandations() {
         // Affichage des impacts carbone par ordre décroissant
         List<ConsoCarbone> consoCarbones = new ArrayList<>();
         consoCarbones.add(alimentation);
@@ -193,19 +195,24 @@ public class Utilisateur {
         Collections.reverse(consoCarbones);
 
         StringBuilder sb = new StringBuilder();
+
         for (ConsoCarbone consommation : consoCarbones) {
             sb.append(consommation);
             sb.append(System.lineSeparator());
         }
-        System.out.println(sb);
+
+        sb.append(System.lineSeparator());
 
         // Recommandations pour les 3 plus importants
         for (int i = 0; i < 3; ++i) {
-            System.out.println(consoCarbones.get(i).recommandation());
+            sb.append(consoCarbones.get(i).recommandation());
+            sb.append(System.lineSeparator());
         }
+
+        return sb.toString();
     }
 
     public static void main(String[] args) {
-        new Utilisateur("utilisateur_txt/utilisateur2.txt").afficherRecommandations();
+        System.out.println(new Utilisateur("utilisateur_txt/utilisateur2.txt").recommandations());
     }
 }

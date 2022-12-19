@@ -1,10 +1,14 @@
 package consoCarbone;
 
+import java.text.DecimalFormat;
+
 public abstract class ConsoCarbone implements Comparable<ConsoCarbone> {
     private static int compteurId = 0;
     private final int id;
 
     private double impact;
+
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     public ConsoCarbone() {
         this.id = compteurId++;
@@ -38,5 +42,10 @@ public abstract class ConsoCarbone implements Comparable<ConsoCarbone> {
     @Override
     public int compareTo(ConsoCarbone o) {
         return Double.compare(impact, o.impact);
+    }
+
+    @Override
+    public String toString() {
+        return df.format(impact) + " TCO2eq";
     }
 }

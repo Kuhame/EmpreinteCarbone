@@ -45,9 +45,4 @@ public abstract class BienConso extends ConsoCarbone {
     public String recommandation() {
         return "Vous devriez dépenser moins.";
     }
-
-    @Override
-    public String toString() {
-        return "Impact du bien de consommation : " + super.getImpact();
-    }
 }

@@ -61,6 +61,6 @@ public class Alimentation extends ConsoCarbone {
 
     @Override
     public String toString() {
-        return "Impact de l'alimentation : " + super.getImpact();
+        return "Impact de l'alimentation : " + super.toString();
     }
 }

@@ -94,6 +94,6 @@ public class Main {
         Utilisateur utilisateur = new Utilisateur(alimentation, habillement, logements, transports, servicesPublics);
 
         // Affichage de l'empreinte carbone de l'utilisateur
-        utilisateur.afficherRecommandations();
+        System.out.println(utilisateur.recommandations());
     }
 }

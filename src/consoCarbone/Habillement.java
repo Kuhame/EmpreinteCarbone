@@ -56,6 +56,6 @@ public class Habillement extends BienConso {
 
     @Override
     public String toString() {
-        return "Impact de l'habillement : " + super.getImpact();
+        return "Impact de l'habillement : " + super.toString();
     }
 }
