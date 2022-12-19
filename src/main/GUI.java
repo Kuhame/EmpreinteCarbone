@@ -96,10 +96,17 @@ public class GUI extends Application {
         TextField tfAmortissement = new TextField();
         tfAmortissement.setDisable(true);
 
+        // Popup pour afficher les recommandations
+        Dialog<String> dialog = new Dialog<>();
+        dialog.setTitle("Résultats");
+        ButtonType btnOk = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(btnOk);
+
         // ***** Bouton de calcul *****
         Button btnCalcul = new Button("Calculer");
         btnCalcul.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent event) {
+            @Override
+            public void handle(ActionEvent event) {
                 double txBoeuf = Double.parseDouble(tfTxBoeuf.getText());
                 double txVege = Double.parseDouble(tfTxVege.getText());
                 int nbChemises = Integer.parseInt(tfNbChemises.getText());
@@ -116,16 +123,16 @@ public class GUI extends Application {
                     Taille taille = cbxTaille.getValue();
                     int kilomAnnee = Integer.parseInt(tfNbKmAn.getText());
                     int amortissement = Integer.parseInt(tfAmortissement.getText());
-                    transport = new Transport(chkPossede.isSelected(),taille,kilomAnnee,amortissement);
+                    transport = new Transport(chkPossede.isSelected(), taille, kilomAnnee, amortissement);
                 }
-                Alimentation alimentation = new Alimentation(txBoeuf,txVege);
-                BienConso habillement = new Habillement(nbChemises,nbJeans,nbTshirts,nbPulls,nbManteaux,nbRobes,nbChaussures);
-                Logement logement = new Logement(superficie,classeEnergetique);
+                Alimentation alimentation = new Alimentation(txBoeuf, txVege);
+                BienConso habillement = new Habillement(nbChemises, nbJeans, nbTshirts, nbPulls, nbManteaux, nbRobes, nbChaussures);
+                Logement logement = new Logement(superficie, classeEnergetique);
                 ServicesPublics servicesPublics = ServicesPublics.getInstance();
                 Utilisateur utilisateur = new Utilisateur(alimentation, habillement, logement, transport, servicesPublics);
-                utilisateur.afficherRecommandations();
 
-
+                dialog.setContentText(utilisateur.recommandations());
+                dialog.showAndWait();
             }
         });
 
