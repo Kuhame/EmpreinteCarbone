@@ -21,46 +21,56 @@ public class GUI extends Application {
         // Taux boeuf
         Label labelTxBoeuf = new Label("Proportion de repas à base de bœuf ?");
         TextField tfTxBoeuf = new TextField();
+        tfTxBoeuf.setPromptText("0.6"); // placeholder
 
         // Taux vege
         Label labelTxVege = new Label("Proportion de repas végétariens ?");
         TextField tfTxVege = new TextField();
+        tfTxVege.setPromptText("0.2");
 
         // ***** Habillement *****
 
         // Chemises
         Label labelNbChemises = new Label("Nombre de chemises achetées par an ?");
         TextField tfNbChemises = new TextField();
+        tfNbChemises.setPromptText("3");
 
         // Jeans
         Label labelNbJeans = new Label("Nombre de jeans achetés par an ?");
         TextField tfNbJeans = new TextField();
+        tfNbJeans.setPromptText("2");
 
         // T-Shirts
         Label labelNbTShirts = new Label("Nombre de T-shirts achetés par an ?");
         TextField tfNbTShirts = new TextField();
+        tfNbTShirts.setPromptText("4");
 
         // Pulls
         Label labelNbPulls = new Label("Nombre de pulls achetés par an ?");
         TextField tfNbPulls = new TextField();
+        tfNbPulls.setPromptText("2");
 
         // Manteaux
         Label labelNbManteaux = new Label("Nombre de manteaux achetés par an ?");
         TextField tfNbManteaux = new TextField();
+        tfNbManteaux.setPromptText("1");
 
         // Robes
         Label labelNbRobes = new Label("Nombre de robes achetées par an ?");
         TextField tfNbRobes = new TextField();
+        tfNbRobes.setPromptText("1");
 
         // Chaussures
         Label labelNbChaussures = new Label("Nombre de chaussures achetées par an ?");
         TextField tfNbChaussures = new TextField();
+        tfNbChaussures.setPromptText("2");
 
         // ***** Logement *****
 
         // Superficie
         Label labelSuperficie = new Label("Superficie de votre logement ?");
         TextField tfSuperficie = new TextField();
+        tfSuperficie.setPromptText("30");
 
         // Classe énergétique
         Label labelCE = new Label("Classe énergétique de votre logement ?");
@@ -88,12 +98,14 @@ public class GUI extends Application {
         labelNbKmAn.setDisable(true);
         TextField tfNbKmAn = new TextField();
         tfNbKmAn.setDisable(true);
+        tfNbKmAn.setPromptText("1102");
 
         // Amortissement
         Label labelAmortissement = new Label("Durée d'amortissement ?");
         labelAmortissement.setDisable(true);
         TextField tfAmortissement = new TextField();
         tfAmortissement.setDisable(true);
+        tfAmortissement.setPromptText("7");
 
         // Checkbox event handler
         chkPossede.selectedProperty().addListener((observableValue, oldValue, newValue) -> {
