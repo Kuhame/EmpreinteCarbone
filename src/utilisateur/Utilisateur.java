@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Utilisateur {
@@ -196,16 +197,26 @@ public class Utilisateur {
 
         StringBuilder sb = new StringBuilder();
 
+        double total = 0.0;
         for (ConsoCarbone consommation : consoCarbones) {
+            total += consommation.getImpact();
             sb.append(consommation);
             sb.append(System.lineSeparator());
         }
 
         sb.append(System.lineSeparator());
 
+        sb.append("Total : ").append(new DecimalFormat("0.00").format(total)).append(" TCO2eq");
+        sb.append(System.lineSeparator());
+
+        // Français moyen pour comparaison
+        sb.append("Empreinte carbone moyenne d'un Français en 2018 : 11 TCO2eq").append(System.lineSeparator());
+        sb.append(System.lineSeparator());
+
+        sb.append("Vos recommandations :").append(System.lineSeparator());
         // Recommandations pour les 3 plus importants
         for (int i = 0; i < 3; ++i) {
-            sb.append(consoCarbones.get(i).recommandation());
+            sb.append("- ").append(consoCarbones.get(i).recommandation());
             sb.append(System.lineSeparator());
         }
 
