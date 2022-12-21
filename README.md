@@ -87,6 +87,6 @@ Vos recommandations :
 Attention : la nécessaire réduction des émissions du service public ne signifie pas moins de service public, au contraire !
 ```
 
-#### GUI
+### GUI
 
 ![GUI](./static/gui.png)
