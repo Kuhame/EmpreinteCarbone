@@ -77,11 +77,16 @@ Impact des services publics : 1.50 TCO2eq
 Impact du logement : 1.20 TCO2eq
 Impact de l'habillement : 0.39 TCO2eq
 
-Essayez de changer de voiture pour un plus petit modèle.
-Tout en minimisant votre consommation de viande, vous pourriez vous orienter vers des produits locaux.
-Vous pourriez demander à votre collectivité de réduire, notamment, le temps durant lequel sont allumés les éclairages des rues ou des commerces, particulièrement le jour et la nuit après fermeture.
+Total : 7.55 TCO2eq
+Empreinte carbone moyenne d'un Français en 2018 : 11 TCO2eq
+
+Vos recommandations :
+- Essayez de changer de voiture pour un plus petit modèle.
+- Tout en minimisant votre consommation de viande, vous pourriez vous orienter vers des produits locaux.
+- Vous pourriez demander à votre collectivité de réduire, notamment, le temps durant lequel sont allumés les éclairages des rues ou des commerces, particulièrement le jour et la nuit après fermeture.
 Attention : la nécessaire réduction des émissions du service public ne signifie pas moins de service public, au contraire !
 ```
-#### GUI (utilisateur_txt/utilisateur1.txt)
+
+#### GUI
 
 ![GUI](./static/gui.png)
